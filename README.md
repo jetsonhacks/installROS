@@ -56,8 +56,8 @@ $ sudo apt-key del 421C365BD9FF1F717815A3895523BAEEB01FA116
 
 ## Release Notes
 <strong>January 2020</strong>
-* vL4T32.3.1
-* L4T 32.3.1 (JetPack 4.3)
+* v1.0
+* Tested on L4T 32.3.1 (JetPack 4.3)
 
 ## License
 MIT License
