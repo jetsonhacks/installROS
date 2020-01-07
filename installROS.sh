@@ -139,6 +139,6 @@ tput sgr0
 sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential -y
 tput setaf 2
 echo "Installation complete!"
-echo "Please setup up your ROS network environment in ~/.bashrc"
+echo "Please setup your Catkin Workspace"
 tput sgr0
 
