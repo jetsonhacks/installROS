@@ -1,9 +1,9 @@
 # installROS
-Install Robot Operating System (ROS) on NVIDIA Jetson Developer Kits
+Install Robot Operating System (ROS) Melodic on NVIDIA Jetson Developer Kits
 
-These scripts will install Robot Operating System (ROS) on the NVIDIA Jetson Developer Kits. 
+These scripts will install Robot Operating System (ROS) Melodic on the NVIDIA Jetson Developer Kits. 
 
-Jetson TX2, Jetson AGX Xavier, Jetson TX1, Jetson Nano
+Jetson Nano, Jetson AGX Xavier, Jetson Xavier NX, Jetson TX2, Jetson TX1
 
 The script is based on the Ubuntu ARM install of ROS Melodic: http://wiki.ros.org/melodic/Installation/Ubuntu
 
@@ -26,43 +26,46 @@ Default is ros-melodic-ros-base if no packages are specified.
 
 Example Usage:
 
-$ ./installROS.sh -p ros-melodic-desktop -p ros-melodic-rgbd-launch
+`$ ./installROS.sh -p ros-melodic-desktop -p ros-melodic-rgbd-launch`
 
 This script installs a baseline ROS environment. There are several tasks:
 
-<ul>
-<li>Enable repositories universe, multiverse, and restricted</li>
-<li>Adds the ROS sources list</li>
-<li>Sets the needed keys</li>
-<li>Loads specified ROS packages, defaults to ros-melodic-base-ros if none specified</li>
-<li>Initializes rosdep</li>
-</ul>
+* Enable repositories universe, multiverse, and restricted
+* Adds the ROS sources list
+* Sets the needed keys
+* Loads specified ROS packages, defaults to ros-melodic-base-ros if none specified
+* Initializes rosdep
+* Sets up `ROS_MASTER_URI` and `ROS_IP` in the `~/.bashrc` file
+
+*___Note:__ You will need to check your `~/.bashrc` file to make sure the ROS_MASTER_URI and ROS_IP are setup correctly for your environment. During configuration, a best guess is made which should be considered a placeholder.*
 
 You can edit this file to add the ROS packages for your application. 
 
-<strong>setupCatkinWorkspace.sh</strong>
+**setupCatkinWorkspace.sh**
 Usage:
 
-$ ./setupCatkinWorkspace.sh [optionalWorkspaceName]
+`$ ./setupCatkinWorkspace.sh [_optionalWorkspaceName_]`
 
-where optionalWorkspaceName is the name of the workspace to be used. The default workspace name is catkin_ws. This script also sets up some ROS environment variables. Refer to the script for details.
-
-<em><b>Note:</b> On June 7, 2019 the GPG key for ROS was changed due to security issues. If you have ROS installed on your system before this, you should delete the GPG key:</em>
+where _optionalWorkspaceName_ is the name and path of the workspace to be used. The default workspace name is `~/catkin_ws`. 
  
-<pre>
-$ sudo apt-key del 421C365BD9FF1F717815A3895523BAEEB01FA116
-</pre> 
-
-
 ## Release Notes
-<strong>January 2020</strong>
+
+### September 2021
+* v1.1
+* Tested on L4T 32.6.1 (JetPack 4.6)
+* Update ROS GPG Key
+* Setup ROS_IP more intelligently
+* Setup ROS_MASTER_URI and ROS_IP in installROS script instead of setupCatkinWorkspace
+* Script wrangling and cleanup
+
+### January 2020
 * v1.0
 * Tested on L4T 32.3.1 (JetPack 4.3)
 
 ## License
 MIT License
 
-Copyright (c) 2017-2020 JetsonHacks
+Copyright (c) 2017-2021 JetsonHacks
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
