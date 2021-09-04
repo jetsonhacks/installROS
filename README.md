@@ -57,6 +57,7 @@ where _optionalWorkspaceName_ is the name and path of the workspace to be used. 
 * Setup ROS_IP more intelligently
 * Setup ROS_MASTER_URI and ROS_IP in installROS script instead of setupCatkinWorkspace
 * Script wrangling and cleanup
+* Thank you @hweizh for suggested ROS Key change!
 
 ### January 2020
 * v1.0
