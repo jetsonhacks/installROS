@@ -37,7 +37,7 @@ This script installs a baseline ROS environment. There are several tasks:
 * Initializes rosdep
 * Sets up `ROS_MASTER_URI` and `ROS_IP` in the `~/.bashrc` file
 
-*___Note:__ You will need to check your `~/.bashrc` file to make sure the ROS_MASTER_URI and ROS_IP are setup correctly for your environment. During configuration, a best guess is made which should be considered a placeholder.*
+_**Note:** You will need to check your `~/.bashrc` file to make sure the ROS_MASTER_URI and ROS_IP are setup correctly for your environment. During configuration, a best guess is made which should be considered a placeholder._
 
 You can edit this file to add the ROS packages for your application. 
 
