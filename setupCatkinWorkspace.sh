@@ -1,33 +1,47 @@
 #!/bin/bash
-# Create a Catkin Workspace and setup ROS environment variables
-# Usage setupCatkinWorkspace.sh dirName
+# Create a Catkin Workspace
+# Copyright (c) JetsonHacks, 2019-2021
+
+# MIT License
+# Maintainer of ARM builds for ROS is http://answers.ros.org/users/1034/ahendrix/
+# Information from:
+# http://wiki.ros.org/melodic/Installation/UbuntuARM
+# 
 
 source /opt/ros/melodic/setup.bash
-DEFAULTDIR=~/catkin_ws
-CLDIR="$1"
-if [ ! -z "$CLDIR" ]; then 
- DEFAULTDIR=~/"$CLDIR"
-fi
-if [ -e "$DEFAULTDIR" ] ; then
-  echo "$DEFAULTDIR already exists; no action taken" 
+
+# Usage setupCatkinWorkspace.sh dirName
+help_usage ()
+{
+    echo "Usage: ./setupCatkinWorkspac.sh <path>"
+    echo "  Setup a Catkin Workspace at the path indicated"
+    echo "  Default path is ~/catkin_ws"
+    echo "  -h | --help  This message"
+    exit 0
+}
+
+CATKIN_DIR=""
+ case $1 in
+   -h | --help)           help_usage ;;
+    *)                    CATKIN_DIR="$1" ;;
+ esac
+
+
+CATKIN_DIR=${CATKIN_DIR:="${HOME}/catkin_ws"}
+
+if [ -e "$CATKIN_DIR" ] ; then
+  echo "$CATKIN_DIR already exists; no action taken" 
   exit 1
 else 
-  echo "Creating Catkin Workspace: $DEFAULTDIR"
+  echo "Creating Catkin Workspace: $CATKIN_DIR"
 fi
-echo "$DEFAULTDIR"/src
-mkdir -p "$DEFAULTDIR"/src
-cd "$DEFAULTDIR"/src
+echo "$CATKIN_DIR"/src
+mkdir -p "$CATKIN_DIR"/src
+cd "$CATKIN_DIR"/src
 catkin_init_workspace
-cd "$DEFAULTDIR"
+cd "$CATKIN_DIR"
 catkin_make
 
 
-#setup ROS environment variables
-grep -q -F ' ROS_MASTER_URI' ~/.bashrc ||  echo 'export ROS_MASTER_URI=http://localhost:11311' | tee -a ~/.bashrc
-grep -q -F ' ROS_IP' ~/.bashrc ||  echo "export ROS_IP=$(hostname -I)" | tee -a ~/.bashrc
-echo "export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
-
-echo "The Catkin Workspace has been created"
-echo "Please modify the placeholders for ROS_MASTER_URI and ROS_IP placed into the file ${HOME}/.bashrc"
-echo "to suit your environment."
+echo "Catkin workspace: $CATKIN_DIR created"
 
