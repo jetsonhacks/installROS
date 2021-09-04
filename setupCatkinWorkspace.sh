@@ -39,7 +39,7 @@ echo "$CATKIN_DIR"/src
 mkdir -p "$CATKIN_DIR"/src
 cd "$CATKIN_DIR"/src
 catkin_init_workspace
-cd "$CATKIN_DIR"
+cd ..
 catkin_make
 
 
