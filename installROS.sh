@@ -114,6 +114,11 @@ sudo apt-add-repository universe
 sudo apt-add-repository multiverse
 sudo apt-add-repository restricted
 
+tput setaf 2
+echo "Updating apt"
+tput sgr0
+sudo apt update
+
 # Setup sources.lst
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 # Setup keys
@@ -121,9 +126,9 @@ sudo apt install curl
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 
 tput setaf 2
-echo "Updating apt-get"
+echo "Updating apt"
 tput sgr0
-sudo apt-get update
+sudo apt update
 tput setaf 2
 echo "Installing ROS"
 tput sgr0
